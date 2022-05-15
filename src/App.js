@@ -1,24 +1,22 @@
-import React from 'react';
+import React from 'react'
 
-const date1 = new Date()
-const date2 = new Date('2023-06-25')
-const date3 = new Date('2021-12-17')
+function remainingDay(start, end) {
+  return Math.abs(
+    (new Date(start).getTime() - new Date(end).getTime()) / (1000 * 3600 * 24)
+  )
+}
 
-const date_diff1 = Math.floor(
-  Math.abs((date1.getTime() - date2.getTime()) / (1000 * 3600 * 24))
-)
-const date_diff2 = Math.floor(
-  Math.abs((date3.getTime() - date2.getTime()) / (1000 * 3600 * 24))
-)
+let remainPeriod = remainingDay('2022-05-15', '2023-06-25')
+let fullPeriod = remainingDay('2021-12-17', '2023-06-25')
 
 const Park = React.createElement(
   'h1',
   { style: { color: 'red' } },
-  '전역까지' + date_diff1 + '일'
+  '전역까지' + remainPeriod + '일'
 )
 
 //남은 날짜를 기준으로 현재까지 복무를 몇% 마쳤는지 백분율로 환산
-let wid = 100 - (date_diff1 / date_diff2) * 100
+let wid = 100 - (remainPeriod / fullPeriod) * 100
 wid = Math.floor(wid * 100) / 100
 
 //환산한 값을 사이트에 진행도 바로 표시
@@ -59,11 +57,22 @@ function Progress() {
 
 function App() {
   return (
-    <center>
-      <image src='img/RIP_Z.png'/>
-      <h2 style={stl_h}> 전역까지 {date_diff1}일</h2>
-      <Progress />
-    </center>
+    <div style={{
+      position:"absolute",
+      top:0,
+      left:0,
+      width:"100%",
+      height:"100%",
+      backgroundColor:"rgb(46, 46, 48)"
+
+    }}
+    >
+      <center>
+        <img src="img/RIP_K.PNG" />
+        <h2 style={stl_h}> 전역까지 {remainPeriod}일</h2>
+        <Progress />
+      </center>
+    </div>
   )
 }
 
