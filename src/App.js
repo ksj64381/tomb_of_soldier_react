@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Park} from './Park'
 
 
-const [page, usePage] = useState('');
-
-function onCl = () => usePage((current) => !current)
-
 function App() {
+  const [page, setPage] = useState('');
+  const onCl = () => setPage((current) => !current)
+
   return (
     <div>
-      <button onClick={onCl()} value={page}>go back <button/>
-    {page ? <Park> : null}
+      <button onClick={onCl} value={page}>park</button>
+      {page ? <Park/> : null}
     </div>
   )
 }
