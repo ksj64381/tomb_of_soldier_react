@@ -14,4 +14,6 @@ function App() {
   )
 }
 
+export {page, setPage};
+
 export default App

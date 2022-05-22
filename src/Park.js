@@ -1,4 +1,5 @@
 import React from 'react'
+import {page, setPage} from './App'
 
 function remainingDay(start, end) {
   return Math.round(Math.abs(
@@ -50,6 +51,10 @@ function Progress() {
   )
 }
 
+function Back(){
+  setPage((current) => !current)
+}
+
 export function Park(){
   return(
     <div style={{
@@ -62,6 +67,7 @@ export function Park(){
 
     }}
     >
+      <button onClick={Back}>뒤로 가기</button>
       <center>
         <img src="img/RIP_K.PNG" />
         <h2 style={stl_h}> 전역까지 {remainPeriod}일</h2>
